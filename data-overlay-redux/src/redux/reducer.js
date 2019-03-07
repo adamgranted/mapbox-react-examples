@@ -33,7 +33,7 @@ const options = [{
   ]
 }]
 
-const initialState: State = {
+const initialState = {
   data,
   options,
   active: options[0]
@@ -42,12 +42,16 @@ const initialState: State = {
 function reducer(state = initialState, action) {
   switch (action.type) {
     case Constants.SET_ACTIVE_OPTION:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         active: action.option
-      });
+      };
     default:
       return state;
   }
 }
 
-export { reducer, initialState };
+export {
+  reducer,
+  initialState
+};
